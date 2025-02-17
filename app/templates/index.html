@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Index Page {% endblock %}
+
+{% block content %}
+    <h1> Hello Index Page </h1>
+    <table border="1">
+        <tr>
+            <th>Infants</th>
+            <th>Diplomats</th>
+            <th>Deportees</th>
+        </tr>
+
+        {% for iic in iics %}
+            <tr>
+                <td>{{ iic.infants }}</td>
+                <td>{{ iic.diplomats }}</td>
+                <td>{{ iic.deportees }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h3>New Person</h3>
+    <form action="{{ url_for('index') }}" method="POST">
+
+        <input type="number" name="infants" id="infants" placeholder="Infants">
+        <input type="number" name="diplomats" id="diplomats" placeholder="Diplomats">
+        <input type="number" name="deportees" id="deportees" placeholder="Deportees">
+
+        <input type="submit" value="Submit">
+    </form>
+    <button class="btn btn-primary">Hello</button>
+
+    <img src="#" alt="">
+{% endblock %}
