@@ -3,13 +3,14 @@ from models import IICS, GIA
 
 def register_routes(app, db):
 
-    @app.route('/', methods=['GET', 'POST'])
+    @app.route('/', methods=['GET'])
     def index():
-        if request.method == 'GET':
-            iics = IICS.query.all()
-            return render_template('index.html', iics=iics)
+        iics = IICS.query.all()
+        return render_template('index.html', iics=iics)
 
-        elif request.method == 'POST':
+    @app.route('/add', methods=['GET', 'POST'])
+    def add_iics():
+        if request.method == 'POST':
             infants = request.form.get('infants')
             diplomats = request.form.get('diplomats')
             deportees = request.form.get('deportees')
@@ -20,6 +21,8 @@ def register_routes(app, db):
 
             flash("New entry added successfully!", "success")
             return redirect(url_for('index'))
+
+        return render_template('iics/add.html')
 
     @app.route('/update/<int:iic_id>', methods=['GET', 'POST'])
     def update_iic(iic_id):
