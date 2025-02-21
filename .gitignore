@@ -1,1 +1,11 @@
-# Ignore Python bytecode files__pycache__/*.pyc*.pyo# Ignore environment folderapp_env/# Ignore specific file
+# Ignore Python bytecode files
+__pycache__/
+app/__pycache__/
+*.pyc
+*.pyo
+
+# Ignore environment folder
+app_env/
+
+
+# Ignore specific file
